@@ -41,6 +41,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug workspace
+        run: |
+          pwd
+          ls -al
+          find . -maxdepth 3 -type f
+
       - name: Unzip source
         run: |
           unzip "${{ github.event.inputs.zip_name }}" -d source

@@ -84,3 +84,7 @@
 - `AWS_REGION`: `ap-northeast-2`
 - `AWS_ACCOUNT_ID`: `<ACCOUNT_ID>`
 - `AWS_ROLE_NAME`: `GitHubActionsECRRole`
+
+# How to Use
+
+![images](image.png)
