@@ -1,3 +1,8 @@
+- 로컬에서 도커 이미지 빌드하면 CPU/메모리 부하가 심하게 걸려서(특히 멀티 아키텍처) 작성해둔 AWS ECR에 이미지를 빌드해서 푸시하는 Github Actions 워크플로우임
+- 퍼블릭 레포지토리 한정 Actions 러너 무제한 무료이니 후배님들 Fork 하거나 Clone 하셔서 알아서 잘 쓰시면 됩니당~~
+
+---
+
 # GitHub Actions OIDC with AWS ECR
 
 ## AWS OIDC Provider
