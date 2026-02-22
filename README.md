@@ -53,13 +53,18 @@
 
 ## IAM Policy (ECR)
 
-- Policy Name: `GitHubActionsECRPolicy`
+- Policy Name: `GitHubActionsECRPolicy` (or `GithubActionsImageBuilderPolicy`)
 
 ```json
 {
     "Version": "2012-10-17",
     "Statement": [
-        { "Sid": "ECRAuth", "Effect": "Allow", "Action": ["ecr:GetAuthorizationToken"], "Resource": "*" },
+        {
+            "Sid": "ECRAuth",
+            "Effect": "Allow",
+            "Action": ["ecr:GetAuthorizationToken"],
+            "Resource": "*"
+        },
         {
             "Sid": "ECRPushPull",
             "Effect": "Allow",
@@ -73,12 +78,19 @@
                 "ecr:UploadLayerPart"
             ],
             "Resource": "arn:aws:ecr:<AWS_REGION>:<ACCOUNT_ID>:repository/<ECR_REPOSITORY>"
+        },
+        {
+            "Sid": "S3ReadObject",
+            "Effect": "Allow",
+            "Action": ["s3:GetObject"],
+            "Resource": "arn:aws:s3:::<BUCKET_NAME>/*"
         }
     ]
 }
 ```
 
 - `ECR_REPOSITORY` should be replaced with `*`(wildcard) if you want to allow all ECR repositories.
+- `BUCKET_NAME` should be replaced with the name of the S3 bucket where your Github repository ZIP file is stored. If you don't use S3, you can omit the S3 permissions. (only `builder-s3.yaml` workflow uses S3)
 
 ## IAM Role Policy Attachment
 
